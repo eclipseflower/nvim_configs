@@ -20,6 +20,8 @@ end
 
 -- normal
 vim.keymap.set('n', '<leader><c-r>', reload_config, opts)
+vim.keymap.set('n', '<leader><c-e>', ':!start explorer /select,%:p<CR>', opts)
+vim.keymap.set('n', '<c-n>', ':enew<CR>', opts)
 vim.keymap.set('n', '<c-s>', ':w<CR>', opts)
 vim.keymap.set('n', 'c', '"cc', opts)
 vim.keymap.set('n', 'C', '"cC', opts)
@@ -54,4 +56,4 @@ vim.keymap.set('n', '<leader><c-w>', ':Telescope grep_string<CR>', opts)
 
 -- insert
 vim.keymap.set('i', '<c-s>', '<c-[>:w<CR>', opts)
-
+vim.keymap.set('i', '<c-v>', '<c-r>*', opts)

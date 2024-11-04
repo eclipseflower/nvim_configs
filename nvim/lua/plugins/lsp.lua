@@ -69,6 +69,10 @@ return {
                     }
                 }
             })
+
+            require('lspconfig').clangd.setup({
+                cmd = { bin_path .. "clangd" },
+            })
         end
     }
 }

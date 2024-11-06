@@ -1,6 +1,11 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
   keys = {
-    { "<leader>ff", "<cmd>:Neotree<cr>", desc = "focus neo tree" },
+    { "<leader>fo", "<cmd>:Neotree<cr>", desc = "open neo tree" },
+  },
+  opts = {
+    filesystem = {
+      bind_to_cwd = true,
+    },
   },
 }

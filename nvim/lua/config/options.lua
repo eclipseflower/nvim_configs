@@ -5,3 +5,4 @@
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.guifont = "CodeNewRoman Nerd Font"
+vim.opt.fixendofline = false

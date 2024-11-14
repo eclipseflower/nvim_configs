@@ -4,7 +4,7 @@
 
 -- Disable autoformat
 vim.api.nvim_create_autocmd({ "FileType" }, {
-    pattern = { "lua", "cs", "cpp" },
+    pattern = { "lua", "cs", "cpp", "python" },
     callback = function()
         vim.b.autoformat = false
     end,

@@ -11,4 +11,4 @@ map('n', 'D', '"dD')
 map('n', 'x', '"xx')
 map('n', 'X', '"xX')
 
-map({ "i", "x", "s" }, "<c-v>", "<c-r>*", { desc = "Paste" })
+map({ "i", "x", "s", "c" }, "<c-v>", "<c-r>*", { desc = "Paste" })

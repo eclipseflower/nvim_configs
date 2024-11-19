@@ -10,5 +10,6 @@ map('n', 'd', '"dd')
 map('n', 'D', '"dD')
 map('n', 'x', '"xx')
 map('n', 'X', '"xX')
+map('t', '<c-v>', '<c-\\><c-n>pi', { desc = 'Paste' })
 
-map({ "i", "x", "s", "c" }, "<c-v>", "<c-r>*", { desc = "Paste" })
+map({ 'i', 'x', 's', 'c' }, '<c-v>', '<c-r>*', { desc = 'Paste' })

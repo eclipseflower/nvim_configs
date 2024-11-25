@@ -8,3 +8,4 @@ opt.shiftwidth = 4
 opt.guifont = "CodeNewRoman Nerd Font"
 opt.fixendofline = false
 opt.wrap = true
+opt.title = true

@@ -1,5 +1,7 @@
 -- UnrealBuildTool.exe -mode=GenerateClangDatabase -Target=UnrealEditor Development Win64
 
+local util = require "lspconfig.util"
+
 return {
     "neovim/nvim-lspconfig",
     opts = {
@@ -16,7 +18,6 @@ return {
 
             pyright = {
                 root_dir = function(fname)
-                    local util = require "lspconfig.util"
                     local root_files = {
                         "pyproject.toml",
                         "setup.py",
@@ -29,6 +30,10 @@ return {
                     }
                     return util.root_pattern(unpack(root_files))(fname)
                 end,
+            },
+
+            omnisharp = {
+                root_dir = util.root_pattern('*.sln', '*.csproj', 'omnisharp.json', 'function.json', ".svn"),
             },
         },
     },

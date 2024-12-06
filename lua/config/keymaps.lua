@@ -16,6 +16,12 @@ map('n', '<leader>vC', string.format(svn_commit_str_format, '%:p'), { desc = 'SV
 map('n', '<leader>vc', function() return string.format(svn_commit_str_format, vim.fn.getcwd()) end, { expr = true, desc = 'SVN Commit (cwd)' })
 map('n', '<leader>vU', '<cmd>!svn update %:p<cr>', { desc = 'SVN Update (buffer)' })
 map('n', '<leader>vu', '<cmd>!svn update<cr>', { desc = 'SVN Update (cwd)' })
+map('n', '<leader>vb',
+    function()
+        local revision = vim.fn.system('svn info --show-item revision')
+        return string.format('<cmd>!TortoiseProc /command:blame /path:%s /startrev:1 /endrev:%s<cr>', '%:p', revision)
+    end,
+    { expr = true, desc = 'SVN Blame (buffer)' })
 
 map('t', '<c-v>', '<c-\\><c-n>pi', { desc = 'Paste' })
 

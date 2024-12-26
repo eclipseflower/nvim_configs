@@ -7,6 +7,7 @@ return {
     opts = {
         servers = {
             lua_ls = {
+                autostart = false,
                 settings = {
                     Lua = {
                         workspace = {

@@ -18,6 +18,7 @@ return {
             },
 
             pyright = {
+                autostart = false,
                 root_dir = function(fname)
                     local root_files = {
                         "pyproject.toml",
@@ -34,7 +35,12 @@ return {
             },
 
             omnisharp = {
+                autostart = false,
                 root_dir = util.root_pattern('*.sln', '*.csproj', 'omnisharp.json', 'function.json', ".svn"),
+            },
+
+            clangd = {
+                autostart = false,
             },
         },
     },

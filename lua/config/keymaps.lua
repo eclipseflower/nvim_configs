@@ -48,7 +48,7 @@ local function toggle_lsp()
 
             local ft = vim.o.ft
             local lspconfig = require("lspconfig")
-            local servers = lspconfig.util.available_servers()
+            local servers = lspconfig.util._available_servers()
             local count = 0
             for _, serverName in pairs(servers) do
                 if activeMap[serverName] then
@@ -65,7 +65,7 @@ local function toggle_lsp()
             if state then
                 local ft = vim.o.ft
                 local lspconfig = require("lspconfig")
-                local servers = lspconfig.util.available_servers()
+                local servers = lspconfig.util._available_servers()
                 for _, serverName in pairs(servers) do
                     local server = lspconfig[serverName]
                     if server.filetypes and vim.tbl_contains(server.filetypes, ft) then

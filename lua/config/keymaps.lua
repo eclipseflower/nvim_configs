@@ -34,56 +34,6 @@ map("n", "<leader>vb", function()
     vim.system({ "TortoiseProc", "/command:blame", string.format("/path:%s", vim.fn.expand("%:p")), string.format("/rev:%s", revision) })
 end, { expr = true, desc = "SVN Blame (buffer)" })
 
--- lsp keymaps
-local function toggle_lsp()
-    return Snacks.toggle({
-        name = "Lsp (buffer)",
-        get = function()
-            local buf = vim.api.nvim_get_current_buf()
-            local clients = vim.lsp.get_clients({ bufnr = buf })
-            local activeMap = {}
-            for _, client in ipairs(clients) do
-                activeMap[client.name] = true
-            end
-
-            local ft = vim.o.ft
-            local lspconfig = require("lspconfig")
-            local servers = lspconfig.util._available_servers()
-            local count = 0
-            for _, serverName in pairs(servers) do
-                if activeMap[serverName] then
-                    local server = lspconfig[serverName]
-                    if server.filetypes and vim.tbl_contains(server.filetypes, ft) then
-                        count = count + 1
-                    end
-                end
-            end
-            return count > 0
-        end,
-        set = function(state)
-            local buf = vim.api.nvim_get_current_buf()
-            if state then
-                local ft = vim.o.ft
-                local lspconfig = require("lspconfig")
-                local servers = lspconfig.util._available_servers()
-                for _, serverName in pairs(servers) do
-                    local server = lspconfig[serverName]
-                    if server.filetypes and vim.tbl_contains(server.filetypes, ft) then
-                        vim.lsp.start(server)
-                    end
-                end
-            else
-                local clients = vim.lsp.get_clients({ bufnr = buf })
-                for _, client in ipairs(clients) do
-                    vim.lsp.buf_detach_client(buf, client.id)
-                end
-            end
-        end,
-    })
-end
-
-toggle_lsp():map("<leader>ux")
-
 -- terminal mode
 map("t", "<c-v>", "<c-\\><c-n>pi", { desc = "Paste" })
 

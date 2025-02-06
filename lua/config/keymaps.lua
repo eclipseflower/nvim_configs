@@ -33,6 +33,9 @@ map("n", "<leader>vb", function()
     local revision = vim.fn.system("svn info --show-item revision")
     vim.system({ "TortoiseProc", "/command:blame", string.format("/path:%s", vim.fn.expand("%:p")), string.format("/rev:%s", revision) })
 end, { expr = true, desc = "SVN Blame (buffer)" })
+map("n", "<leader>vd", function()
+    vim.system({ "TortoiseProc", "/command:diff", string.format("/path:%s", vim.fn.expand("%:p")) })
+end, { desc = "SVN Diff (buffer)" })
 
 -- terminal mode
 map("t", "<c-v>", "<c-\\><c-n>pi", { desc = "Paste" })
